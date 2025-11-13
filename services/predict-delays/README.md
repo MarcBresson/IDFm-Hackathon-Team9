@@ -1,0 +1,1 @@
+This service aims at providing delay predictions for train lines using machine learning models. It leverages historical data and real-time inputs to forecast potential delays, helping passengers and operators make informed decisions.
