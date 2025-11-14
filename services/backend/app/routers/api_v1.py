@@ -11,7 +11,7 @@ from app.schemas import (
     RiskLevel, AlternativeType, TransportMode
 )
 
-router = APIRouter(prefix="/v1", tags=["API v1"])
+router = APIRouter(prefix="/v1")
 
 # Données mock pour les tests
 MOCK_HOTSPOTS = [
@@ -80,6 +80,7 @@ MOCK_ALTERNATIVES = [
 @router.get(
     "/hotspots",
     response_model=List[Hotspot],
+    tags=["Publique - Core API"],
     summary="Liste des hotspots",
     description="Récupère la liste des hotspots (zones de risque de retard) selon les critères de filtrage"
 )
@@ -121,6 +122,7 @@ def get_hotspots(
     "/alternatives",
     response_model=List[Alternative],
     summary="Liste des alternatives",
+    tags=["Privé - Core API"],
     description="Récupère les alternatives de transport pour un trajet donné et des préférences"
 )
 def get_alternatives(
@@ -157,6 +159,7 @@ def get_alternatives(
     "/commute-log",
     response_model=CommuteLogResponse,
     status_code=status.HTTP_201_CREATED,
+    tags=["Privé - Core API"],
     summary="Enregistrer un trajet",
     description="Enregistre un trajet effectué par un employé avec l'alternative choisie"
 )
@@ -184,6 +187,7 @@ def create_commute_log(commute_log: CommuteLogCreate):
 
 @router.post(
     "/toggle-share-consent",
+    tags=["Privé - Core API"],
     response_model=ShareConsentResponse,
     summary="Modifier le consentement de partage",
     description="Met à jour le consentement d'un employé pour le partage de ses données avec son entreprise"
@@ -207,6 +211,7 @@ def toggle_share_consent(request: ToggleShareConsentRequest):
 @router.get(
     "/rse-report",
     response_model=List[CompanyRseSnapshot],
+    tags=["Privé - Core API"],
     summary="Rapport RSE",
     description="Récupère les indicateurs RSE d'une entreprise pour les périodes demandées"
 )
@@ -259,6 +264,7 @@ def get_rse_report(
 @router.get(
     "/leaderboard",
     response_model=LeaderboardResponse,
+    tags=["Privé - Core API"],
     summary="Classements internes",
     description="Récupère les classements des employés par points (entreprise et équipe)"
 )

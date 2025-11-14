@@ -6,12 +6,13 @@ from typing import List, Optional
 from datetime import datetime
 from app.schemas import Alternative, PartnerAlternativeCreate, Hotspot, RiskLevel
 
-router = APIRouter(prefix="/partner", tags=["API Partenaire"])
+router = APIRouter(prefix="/partner")
 
 @router.post(
     "/alternatives",
     response_model=Alternative,
     status_code=status.HTTP_201_CREATED,
+    tags=["Publique - API Partenaire"],
     summary="Proposer une alternative",
     description="Permet à un partenaire de proposer une alternative pour un hotspot donné"
 )
@@ -49,6 +50,7 @@ def create_partner_alternative(alternative: PartnerAlternativeCreate):
 
 @router.get(
     "/hotspots",
+    tags=["Publique - API Partenaire"],
     response_model=List[Hotspot],
     summary="Récupérer les zones critiques",
     description="Permet aux partenaires de connaître les zones critiques afin de préparer leurs offres"

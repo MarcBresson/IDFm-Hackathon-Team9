@@ -2,6 +2,32 @@ from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from app.routers import api_v1, partner_api
 
+tags_metadata = [
+    {
+        "name": "Public - Core API",
+    },
+    {
+        "name": "Publique - API Partenaire",
+    },
+    {
+        "name": "Privé - Core API",
+    },
+]
+
+app = FastAPI(
+    title="PredictMob API",
+    version="1.0.0",
+    description="API pour la prédiction des aléas de transport et alternatives de mobilité",
+    contact={
+        "name": "Équipe PredictMob",
+        "email": "contact@predictmob.fr"
+    },
+    license_info={
+        "name": "MIT",
+    },
+    openapi_tags=tags_metadata
+)
+
 def custom_openapi():
     if app.openapi_schema:
         return app.openapi_schema
@@ -44,24 +70,11 @@ Cette version utilise des données mock pour démonstration. La logique métier 
     app.openapi_schema = openapi_schema
     return app.openapi_schema
 
-app = FastAPI(
-    title="PredictMob API",
-    version="1.0.0",
-    description="API pour la prédiction des aléas de transport et alternatives de mobilité",
-    contact={
-        "name": "Équipe PredictMob",
-        "email": "contact@predictmob.fr"
-    },
-    license_info={
-        "name": "MIT",
-    }
-)
-
 app.openapi = custom_openapi
 
 @app.get(
     "/",
-    tags=["Racine"],
+    tags=["Système"],
     summary="Point d'entrée de l'API",
     description="Informations générales sur l'API PredictMob"
 )
