@@ -1,0 +1,5 @@
+services:
+  predict-delays:
+    image: marcbressondatategy/idfm-hackathon-2025-predict-model:latest
+    ports:
+      - "8000:8000"
