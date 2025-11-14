@@ -126,7 +126,7 @@ Cette version utilise des données mock pour démonstration:
 
 ### Hotspots d'exemple
 
-- **Paris Gare du Nord**: Risque élevé 8h-10h
+- **Plaisir - Grignon**: Risque élevé 8h-10h
 - **La Défense**: Risque moyen 17h30-19h30
 
 ### Alternatives d'exemple
