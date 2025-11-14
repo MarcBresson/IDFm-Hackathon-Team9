@@ -1,5 +1,7 @@
 services:
   predict-delays:
-    image: marcbressondatategy/idfm-hackathon-2025-predict-model:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
